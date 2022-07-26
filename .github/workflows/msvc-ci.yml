@@ -1,8 +1,5 @@
 name: MSVC-CI
-on:
-  push:
-    branches: [master]
-  pull_request:
+on: push
 
 jobs:
   build:
@@ -25,3 +22,8 @@ jobs:
           bash.exe ..\..\tests\all_tests.sh
         env:
           PYTHON_EXE: python.exe
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: Build
+          path: build/
